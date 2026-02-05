@@ -1,16 +1,25 @@
-# shoppingcard
+# Flutter Shopping Cart App
 
-A new Flutter project.
+  > This is a simple shopping cart app made in Flutter using Provider.
+  > I built this project mainly for practice and learning, to understand how cart logic works in a real app.
+  > While working on this project, I focused more on logic and state management rather than perfect UI.
 
-## Getting Started
+# Why I built this project
 
-This project is a starting point for a Flutter application.
+ > I created this project to:
+ > Practice Provider in a real use case
+ > Understand how add to cart functionality works
+ > Learn how to manage product quantity and total price
+ > Improve my overall Flutter project structure
+ > This project helped me a lot in understanding how things work behind the scenes.
 
-A few resources to get you started if this is your first Flutter project:
+# What this app does
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+> Shows a list of products
+> Allows adding products to the cart
+> Cart screen shows selected items
+> Quantity can be increased or decreased
+> Total price updates automatically using Provider
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Note
+ * This project is not production-ready.It is made only for learning and practice. Code may contain some extra comments or simple logic as I was experimenting and learning.
