@@ -10,7 +10,7 @@ class ProductList extends StatefulWidget {
 }
 
 class _ProductListState extends State<ProductList> {
-   List<String> productName =['Mango','Orange','Grapes','Banana','Chery','Peach','Mixed Fruit Baskte'];
+   List<String> productName =['Mango','Orange','Grapes','Banana','Chery','Peach','Mixed Fruit Basktet'];
    List<String> productUnit = ['kg','Dozen','kg','Dozen','kg','kg','kg'];
    List<int>  productPrice = [10,20,30,40,50,60,70];
    List<String> productImage = [
@@ -60,9 +60,39 @@ class _ProductListState extends State<ProductList> {
                             height: 100,
                             width: 100,
                             image: NetworkImage(productImage[index].toString()),
-                          )
+                          ),
+                            SizedBox(width: 10),
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                               crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                              Text(productName[index].toString(),style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
+                              SizedBox(height: 5),
+                              Text(productUnit[index].toString() +" " +r"$" +  productPrice[index].toString()
+                              ,style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
+                              ],
+                              ),
+                            ),
+                         SizedBox(height: 5),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Container(
+                                height:35,
+                                width: 100,
+                                 decoration: BoxDecoration(
+                                   color: Colors.green,
+                                   borderRadius: BorderRadius.circular(5),
+                                 ),  
+                                 child: Center(
+                                   child: Text(
+                                    'Add to Cart',style: TextStyle(color: Colors.white),
+                                   ),
+                                 ), 
+                            ),
+                            )
                           ],
-                          )
+                          ),
                       ],
                       ),
                     ),
