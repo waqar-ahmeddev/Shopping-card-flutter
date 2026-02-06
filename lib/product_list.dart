@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:shoppingcard/card_model.dart';
+import 'package:shoppingcard/cart_db.dart';
+// import 'package:shoppingcard/cart_model.dart';
+import 'package:shoppingcard/cart_screen.dart';
+
+
 
 
 class ProductList extends StatefulWidget {
@@ -31,10 +37,19 @@ class _ProductListState extends State<ProductList> {
         title:  Text("Product List"),
         centerTitle: true,
           actions: [
-        badges.Badge(
-         badgeContent: const Text('0', style: TextStyle(color: Colors.white, fontSize: 12), ),
-        child: const Icon(Icons.shopping_bag_outlined),
-            ),
+        GestureDetector(
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => CartScreen()),
+    );
+  },
+  child: badges.Badge(
+    badgeContent: const Text('0', style: TextStyle(color: Colors.white, fontSize: 12), ),
+    child: const Icon(Icons.shopping_bag_outlined),
+  ),
+),
+
              const SizedBox(width: 20),
          ],
         ),
@@ -77,19 +92,39 @@ class _ProductListState extends State<ProductList> {
                          SizedBox(height: 5),
                             Align(
                               alignment: Alignment.centerRight,
-                              child: Container(
-                                height:35,
-                                width: 100,
-                                 decoration: BoxDecoration(
-                                   color: Colors.green,
-                                   borderRadius: BorderRadius.circular(5),
-                                 ),  
-                                 child: Center(
-                                   child: Text(
-                                    'Add to Cart',style: TextStyle(color: Colors.white),
-                                   ),
-                                 ), 
-                            ),
+                              child: GestureDetector(
+            onTap: () async {
+            Cart item = Cart(
+      id: null,
+      productId: index.toString(),
+      productName: productName[index],
+      initialPrice: productPrice[index],
+      productPrice: productPrice[index],
+      quantity: 1,
+      unitTag: productUnit[index],
+      image: productImage[index],
+    );
+                await CartDatabase.instance.addToCart(item);
+
+            ScaffoldMessenger.of(context).showSnackBar(
+           SnackBar(content: Text("${productName[index]} added to cart"))
+           );
+             },
+            child: Container(
+        height:35,
+        width: 100,
+    decoration: BoxDecoration(
+      color: Colors.green,
+      borderRadius: BorderRadius.circular(5),
+    ),  
+    child: Center(
+      child: Text(
+        'Add to Cart',style: TextStyle(color: Colors.white),
+      ),
+    ), 
+        ),
+            ),
+
                             )
                           ],
                           ),
